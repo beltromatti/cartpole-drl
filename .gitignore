@@ -1,0 +1,8 @@
+# .gitignore
+data/checkpoints/
+__pycache__/
+*.pyc
+venv/
+.idea/
+*.egg-info/
+data/results/
