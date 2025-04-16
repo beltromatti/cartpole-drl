@@ -25,8 +25,11 @@ Per visualizzare un episodio:
 
 ## Struttura del progetto
 src/: Codice sorgente.
+
 config/: File di configurazione.
+
 data/: Risultati generati.
+
 tests/: Test unitari.
 
 
