@@ -1,10 +1,58 @@
-training:
-  episodes: 500
-  batch_size: 64
-  gamma: 0.99
-  epsilon_start: 1.0
-  epsilon_end: 0.02
-  epsilon_decay: 0.995
-  memory_size: 20000
-  learning_rate: 0.0005
-  target_update: 10
+# Training parameters for the CartPole DQN project
+# Each parameter is explained to illustrate its role in the Deep Q-Network (DQN) algorithm
+
+episodes: 500
+# Number of episodes to train the DQN agent.
+# An episode is a single run of the CartPole environment until the pole falls or a timeout is reached.
+# 500 episodes is typically sufficient to train the agent to achieve high rewards (e.g., >400) in CartPole-v1.
+# Increasing this value allows more training time but increases computational cost.
+
+batch_size: 64
+# Number of transitions sampled from the replay memory for each optimization step.
+# DQN uses experience replay to learn from past experiences, sampling a batch of transitions (state, action, reward, next_state, done).
+# A batch size of 64 balances computational efficiency and stable learning by providing a diverse set of experiences.
+
+gamma: 0.99
+# Discount factor for future rewards in the Bellman equation.
+# Gamma determines how much the agent values future rewards compared to immediate rewards (0 < gamma <= 1).
+# A value of 0.99 means the agent heavily considers future rewards, encouraging long-term planning in CartPole.
+
+epsilon_start: 1.0
+# Initial value of epsilon for the epsilon-greedy exploration strategy.
+# Epsilon controls the trade-off between exploration (random actions) and exploitation (actions based on Q-values).
+# Starting at 1.0 means the agent initially takes random actions 100% of the time, promoting exploration.
+
+epsilon_end: 0.02
+# Final value of epsilon after decay.
+# As training progresses, epsilon decreases to favor exploitation over exploration.
+# A minimum of 0.02 ensures the agent retains a small amount of randomness (2% random actions) to avoid getting stuck in suboptimal policies.
+
+epsilon_decay: 0.995
+# Decay rate for epsilon per episode.
+# After each episode, epsilon is multiplied by this value (epsilon = max(epsilon_end, epsilon * epsilon_decay)).
+# A decay rate of 0.995 reduces epsilon gradually, allowing sufficient exploration early in training while shifting to exploitation later.
+
+memory_size: 20000
+# Maximum number of transitions stored in the replay memory.
+# The replay memory holds past experiences to break temporal correlations and improve learning stability.
+# A size of 20,000 is large enough to store diverse experiences from many episodes in CartPole, ensuring robust training.
+
+learning_rate: 0.0005
+# Learning rate for the Adam optimizer used to update the DQN's weights.
+# The learning rate controls the step size of weight updates during backpropagation.
+# A small value like 0.0005 ensures stable convergence, preventing large updates that could destabilize learning.
+
+target_update: 10
+# Frequency (in episodes) for updating the target network's weights.
+# DQN uses a target network to stabilize Q-value estimates in the Bellman equation.
+# Copying the main network's weights to the target network every 10 episodes balances stability and adaptation to new learning.
+
+visualize_every: 50
+# Frequency (in episodes) for visualizing the agent's performance.
+# Every 50 episodes, the agent plays an episode with rendering enabled to show its behavior.
+# Visualization helps monitor progress but can slow training, so this value balances observation and efficiency.
+
+save_checkpoint_every: 50
+# Frequency (in episodes) for saving model checkpoints.
+# Checkpoints include the model weights, optimizer state, and training progress (episode, epsilon, rewards).
+# Saving every 50 episodes allows resuming training from recent states without excessive disk usage.

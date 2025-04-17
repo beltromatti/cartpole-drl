@@ -2,6 +2,8 @@
 data/checkpoints/
 __pycache__/
 *.pyc
+*.pth
+*.pt
 venv/
 .idea/
 *.egg-info/
