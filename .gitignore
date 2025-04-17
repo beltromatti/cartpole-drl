@@ -1,10 +1,23 @@
-# .gitignore
-__pycache__/
-*.pyc
+# PyTorch files
 *.pth
 *.pt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
 venv/
+
+# References
+references/
+
+# IDEs
+.vscode/
 .idea/
-*.egg-info/
-references
-*.csv
+
+# Miscellaneous
+*.log
+*.DS_Store
