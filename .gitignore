@@ -8,3 +8,4 @@ venv/
 .idea/
 *.egg-info/
 data/results/
+references
